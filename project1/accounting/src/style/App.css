@@ -18,3 +18,23 @@ body {
   margin: 30px auto;
   width: 350px;
 }
+
+.horizontal-menu {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  text-align: center;
+  background-color: black;
+}
+
+.horizontal-menu li {
+  display: inline-block;
+}
+
+.horizontal-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+}

@@ -1,11 +1,12 @@
 import "../style/FormComponent.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const FormConponent = (props) => {
   const { onAddItem } = props; // รับ ค่าที่เก็บไว้ใน props มาคืนให้กับสมาชิกใน props (มี 1 ตัวคือ onAddItem)
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
+  const [formValid, setFormValid] = useState(false);
 
   const inputName = (event) => {
     setName(event.target.value);
@@ -26,6 +27,13 @@ const FormConponent = (props) => {
     setName("");
     setAmount(0);
   };
+
+  useEffect(() => {
+    const checkData = name.trim().length > 0 && amount !== 0;
+    if (checkData) {
+      setFormValid(true);
+    }
+  }, [name, amount]);
 
   return (
     <div>
@@ -50,7 +58,7 @@ const FormConponent = (props) => {
           />
         </div>
         <div>
-          <button type="submit" className="btn">
+          <button type="submit" className="btn" disabled={!formValid}>
             เพิ่มข้อมูล
           </button>
         </div>
